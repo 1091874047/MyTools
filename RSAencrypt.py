@@ -28,6 +28,9 @@ def default_rsa_encrypt(cipher, message):
     ciphertext_decode = ciphertext.decode("utf-8")
     return ciphertext_decode
 
+
+# 调用时需要加上-----BEGIN PUBLIC KEY-----\n
+#              \n-----END PUBLIC KEY-----
 a = """-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCVWOMgz8bTlahOmH3Tb+WwLwowHWwk4mP1JsF8VhMfShB0QG5Mjh69iRtJvHGUm2IUPypogTMR2yeIKbj8Mwsslpl4uMws+XK4/aw55V9hokEU1jJMPHo9DMJhzmY8w8RO9oIxuSCYOz36xvxz5AEj38L/9z1z9A/LWgV/vVPvQQIDAQAB\n-----END PUBLIC KEY-----"""
 r = rsa_encrypt("DAIBKP", a)
 print(a)
