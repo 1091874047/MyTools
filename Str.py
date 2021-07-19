@@ -75,6 +75,3 @@ def StrGetSubBatch(text, first, last):
                 res.append(temp)
         except TypeError:
             return res
-
-# r = StrGetSubBatch(html3, '<a target="_top" title="', '" ')
-# print(r)
