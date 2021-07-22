@@ -31,6 +31,9 @@ def default_rsa_encrypt(cipher, message):
 
 # 调用时需要加上-----BEGIN PUBLIC KEY-----\n
 #              \n-----END PUBLIC KEY-----
-a = """-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCVWOMgz8bTlahOmH3Tb+WwLwowHWwk4mP1JsF8VhMfShB0QG5Mjh69iRtJvHGUm2IUPypogTMR2yeIKbj8Mwsslpl4uMws+XK4/aw55V9hokEU1jJMPHo9DMJhzmY8w8RO9oIxuSCYOz36xvxz5AEj38L/9z1z9A/LWgV/vVPvQQIDAQAB\n-----END PUBLIC KEY-----"""
-r = rsa_encrypt("DAIBKP", a)
-print(a)
+a = """-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAo0z/L+pelCPu6DwDFAY/3ITzesr8lnNmYjHht4XUJvLYYBwvDbHMc8xi9sPK9ohVHIKRVLVmmZ9SdmuWYN9HzCyyZ6kEHx+IDBPnulwjdeN/N0w25mVRhYDWxJ2/1C6cPIuNcISchOQdGKuAC0xR37i/kWH9sjBidAQjageYgQoj1HX81flZaPve75Esue85AHZ0VIurjwx7uEuxvQtvCIUvX1bbF13TIYuTbJbn/LrNHby1Kxp42ggNUjAkYUVSF7SC3UP+YGKruii7Vh1UnJ/rpVhjdt3It8le9px8H4Ltt9N3hzU17rBnFpp2ZnmiZVtlfMvsStY54Fl5cSJVxQIDAQAB\n-----END PUBLIC KEY-----"""
+r = rsa_encrypt("Gong#0310", a)
+# from urllib.parse import quote
+
+print(r)
+# Q/EfB6xHGPHd75iRS+baE33DTC/S/cgQ6RyGv9O1RGl118g4SDvEghq+XbqhMM5f0r3dY1U/Jxwi5VqNjD1NeIW/mYe6RrkXQTiZKP9cLjlcBW8Q2nLmXiJf/4kmmCsJxy674MouLEp2IT/E033Xa0rZ5gm3CrLTRHjuAh3gB/LriiY40B01SXPtzZv0MxWCyxT+zOHUgeTLHf3k9mR9/81y/y8w67oZBd2nwpJUt0n3/m/5hqimvkF2ZEVwtcj7Bj8r2CM5e0ulelc3J5cmP92DK4TaqsldkBSQH8+skDnID11shjltHrpKbhpUp6KkGwzpYkGs+ntmhGxWUSCFYQ==
