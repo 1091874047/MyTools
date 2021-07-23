@@ -1,13 +1,13 @@
 import time
 
 
-def quickSort(arr, left=None, right=None):
+def QuickSort(arr, left=None, right=None):
     left = 0 if not isinstance(left, (int, float)) else left
     right = len(arr) - 1 if not isinstance(right, (int, float)) else right
     if left < right:
         partitionIndex = partition(arr, left, right)
-        quickSort(arr, left, partitionIndex - 1)
-        quickSort(arr, partitionIndex + 1, right)
+        QuickSort(arr, left, partitionIndex - 1)
+        QuickSort(arr, partitionIndex + 1, right)
     return arr
 
 

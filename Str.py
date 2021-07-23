@@ -1,4 +1,3 @@
-
 def StrGetLeft(text, findStr):
     """
 
@@ -77,3 +76,16 @@ def StrGetSubBatch(text, first, last):
             return res
 
 
+def StrToHeadersDict(text):
+    """
+
+    :param text: 三引号字符串
+    :return: headers结构体
+    """
+    HeadersDict = {}
+    StrList = text.split("\n")
+    for single in StrList:
+        res = single.split(": ")
+        if res != ['']:
+            HeadersDict[res[0]] = res[1]
+    return HeadersDict
