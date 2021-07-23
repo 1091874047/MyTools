@@ -75,3 +75,5 @@ def StrGetSubBatch(text, first, last):
                 res.append(temp)
         except TypeError:
             return res
+
+
