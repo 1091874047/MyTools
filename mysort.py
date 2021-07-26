@@ -1,6 +1,4 @@
-import time
-
-
+# 快速排序
 def QuickSort(arr, left=None, right=None):
     left = 0 if not isinstance(left, (int, float)) else left
     right = len(arr) - 1 if not isinstance(right, (int, float)) else right
