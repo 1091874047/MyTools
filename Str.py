@@ -90,8 +90,8 @@ def StrGetSubBatch(text, first, last):
 def StrToHeadersDict(text):
     """
 
-    :param text: 三引号字符串
-    :return: headers结构体
+    :param text: Triple quoted string
+    :return: headers struct
     """
     HeadersDict = {}
     StrList = text.split("\n")
@@ -103,8 +103,11 @@ def StrToHeadersDict(text):
 
 
 def CookieJarToStr(Cookiejar):
-    # Cookie=""
-    # for Cookies in Cookiejar:
-    #     Cookie += Cookies['name'] + '=' + Cookies['value'] + '; '
-    # return Cookies
-    return ",".join([Cookie for Cookies in Cookiejar if Cookies['name'] + '=' + Cookies['value'] + '; '])
+    """
+    :param Cookiejar: CookieList
+    :return: CookieStr
+    """
+    Cookie = ""
+    for Cookies in Cookiejar:
+        Cookie += Cookies['name'] + '=' + Cookies['value'] + '; '
+    return Cookie
