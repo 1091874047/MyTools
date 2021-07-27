@@ -21,5 +21,4 @@ def StandardFormatToTimeStamp(dt):
     """
     timeArray = time.strptime(dt, "%Y-%m-%d %H:%M:%S")
     timestamp = time.mktime(timeArray)
-    print(timestamp)
     return timestamp
