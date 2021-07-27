@@ -1,3 +1,6 @@
+import json
+
+
 def StrGetLeft(text, findStr):
     """
 
@@ -94,16 +97,12 @@ def StrToHeadersDict(text):
     :return: headers struct
     """
     HeadersDict = {}
-
-    try:
-        StrList = text.split("\n")
-        for single in StrList:
-            header = single.split(": ")
-            if header != [''] and "Content-Length" not in header:
-                HeadersDict[header[0]] = header[1]
-        return HeadersDict
-    except IndexError:
-        return HeadersDict
+    StrList = text.split("\n")
+    for single in StrList:
+        header = single.split(": ")
+        if header != [''] and "Content-Length" not in header[0] and "Cookie" not in header[0]:
+            HeadersDict[header[0]] = header[1]
+    return HeadersDict
 
 
 def CookieJarToStr(Cookiejar):
@@ -142,3 +141,5 @@ def StrToData(text):
         if res:
             DataDict.update({res[0]: res[1]})
     return DataDict
+
+from parsel import Selector
