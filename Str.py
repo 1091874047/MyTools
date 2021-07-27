@@ -141,5 +141,3 @@ def StrToData(text):
         if res:
             DataDict.update({res[0]: res[1]})
     return DataDict
-
-from parsel import Selector
