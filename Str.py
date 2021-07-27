@@ -94,20 +94,51 @@ def StrToHeadersDict(text):
     :return: headers struct
     """
     HeadersDict = {}
-    StrList = text.split("\n")
-    for single in StrList:
-        res = single.split(": ")
-        if res != ['']:
-            HeadersDict[res[0]] = res[1]
-    return HeadersDict
+
+    try:
+        StrList = text.split("\n")
+        for single in StrList:
+            header = single.split(": ")
+            if header != [''] and "Content-Length" not in header:
+                HeadersDict[header[0]] = header[1]
+        return HeadersDict
+    except IndexError:
+        return HeadersDict
 
 
 def CookieJarToStr(Cookiejar):
     """
-    :param Cookiejar: CookieList
+    :param Cookiejar: CookieList 程序响应后的 res.cookies options:List[Dict{name:str,value:str},Dict{name:str,value:str}]
     :return: CookieStr
     """
     Cookie = ""
     for Cookies in Cookiejar:
         Cookie += Cookies['name'] + '=' + Cookies['value'] + '; '
     return Cookie
+
+
+def StrToData(text):
+    """
+    将Fiddler复制的数据转化为 K,V 键值对
+    For example: q=1&n=2
+    return:  DataDict={'q':1,'n':2}
+    text 数据来源 fiddler -> 会话详细 -> 数据（post类型）
+    用法一：
+            text = "j_username=abcdefg&j_password=B%40Tabd4ea2b4e7b242b6d48bf6ccec90751&kaptcha=scsd&isForceLogin=1"
+            data = StrToData(text)
+    用法二：
+            n = 1245678
+            text = f"j_username={n}&j_password=B%40Tabd4ea2b4e7b242b6d48bf6ccec90751&kaptcha=scsd&isForceLogin=1"
+            data = StrToData(text)
+    此方法数据转换后全部为str
+    若要对数据进行更新：
+    或者数据类型必须为指定类型:
+                使用 DataDict.update({ K : n })即可
+    """
+    DataDict = {}
+    dataStrList = text.split("&")
+    for data in dataStrList:
+        res = data.split("=")
+        if res:
+            DataDict.update({res[0]: res[1]})
+    return DataDict
