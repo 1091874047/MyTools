@@ -1,6 +1,3 @@
-import json
-
-
 def StrGetLeft(text, findStr):
     """
 
@@ -115,7 +112,7 @@ def CookieJarToStr(Cookiejar):
     return Cookie
 
 
-def StrToData(text):
+def StrToDataDict(text):
     """
     将Fiddler复制的数据转化为 K,V 键值对
     For example: q=1&n=2
@@ -140,11 +137,3 @@ def StrToData(text):
         if res:
             DataDict.update({res[0]: res[1]})
     return DataDict
-
-text="""链表可以选用迭代或递归方式完成反转。你能否用两种方法解决这道题？"""
-res=StrGetSub(text,"选用","方式")
-print(res)
-
-text02 = """123asdas456 123sadadasd456"""
-res02 = StrGetSubBatch(text02,"123","456")
-print(res02)
