@@ -96,8 +96,10 @@ def StrToHeadersDict(text):
     StrList = text.split("\n")
     for single in StrList:
         header = single.split(": ")
-        if header != [''] and "Content-Length" not in header[0] and "Cookie" not in header[0]:
-            HeadersDict[header[0]] = header[1]
+        if len(header) <= 1:
+            continue
+        if header[0] != [''] and "Content-Length" not in header[0] and "Cookie" not in header[0]:
+            HeadersDict[header[0].strip()] = header[1]
     return HeadersDict
 
 
@@ -137,3 +139,6 @@ def StrToDataDict(text):
         if res:
             DataDict.update({res[0]: res[1]})
     return DataDict
+
+
+
