@@ -92,15 +92,17 @@ def StrToHeadersDict(text):
     :param text: Triple quoted string
     :return: headers struct
     """
-    HeadersDict = {}
-    StrList = text.split("\n")
-    for single in StrList:
-        header = single.split(": ")
-        if len(header) <= 1:
-            continue
-        if header[0] != [''] and "Content-Length" not in header[0] and "Cookie" not in header[0]:
-            HeadersDict[header[0].strip()] = header[1]
-    return HeadersDict
+    if text:
+        HeadersDict = {}
+        StrList = text.split("\n")
+        for single in StrList:
+            header = single.split(": ")
+            if len(header) <= 1:
+                continue
+            if header[0] != [''] and "Content-Length" not in header[0] and "Cookie" not in header[0]:
+                HeadersDict[header[0].strip()] = header[1]
+        return HeadersDict
+    return
 
 
 def CookieJarToStr(Cookiejar):
@@ -132,13 +134,15 @@ def StrToDataDict(text):
     或者数据类型必须为指定类型:
                 使用 DataDict.update({ K : n })即可
     """
-    DataDict = {}
-    dataStrList = text.split("&")
-    for data in dataStrList:
-        res = data.split("=")
-        if res:
-            DataDict.update({res[0]: res[1]})
-    return DataDict
+    if text:
+        DataDict = {}
+        dataStrList = text.split("&")
+        for data in dataStrList:
+            res = data.split("=")
+            if res:
+                DataDict.update({res[0]: res[1]})
+        return DataDict
+    return
 
 
 # 快速排序用法
@@ -167,3 +171,16 @@ def partition(arr, left, right):
 
 def swap(arr, i, j):
     arr[i], arr[j] = arr[j], arr[i]
+
+
+def CookieTOCookieJar(cookie):
+    if cookie != "":
+        CookieJar = []
+        Cookiestr = cookie.split(";")
+        for i in Cookiestr:
+            c={}
+            CookieItem = i.split("=")
+            c['name']=CookieItem[0]
+            c['value']=CookieItem[1]
+            CookieJar.append(c)
+        return CookieJar
